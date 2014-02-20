@@ -264,7 +264,8 @@ def get_setup_args():
                         os.path.join(AMALGAMATION_ROOT, "spatialite.c")
                     ],
                     include_dirs = [
-                        os.path.join(AMALGAMATION_ROOT,"headers")
+                        os.path.join(AMALGAMATION_ROOT,"headers"),
+                        os.path.join(os.path.join(AMALGAMATION_ROOT,"headers"),"spatialite")
                     ],
                     library_dirs = [],
                     runtime_library_dirs = [],
