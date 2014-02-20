@@ -154,7 +154,7 @@ class OverrideSystemIncludeOrderBuildCommand(build_ext):
         raise HeaderNotFoundException("cannot find %s, bailing out" % header)
 
     def check_lib(self, ext,func, lib, msg, libz):
-        self.compiler.library_dirs.extend(['/usr/local/lib', '/app/vendor/proj/lib'])
+        self.compiler.library_dirs.extend(['/usr/local/lib', '/app/vendor/proj/lib', '/app/vendor/geos/lib'])
         if self.compiler.has_function(func,libraries=libz + [lib],library_dirs=self.compiler.library_dirs + ext.library_dirs):
             ext.libraries.append(lib)
             ext.libraries.extend(libz)
@@ -163,7 +163,7 @@ class OverrideSystemIncludeOrderBuildCommand(build_ext):
 
     def build_extension(self,ext):
         # Load includes from module directories first!
-        include_dirs = ['/usr/include','/usr/local/include','/app/vendor/proj/include']
+        include_dirs = ['/usr/include','/usr/local/include','/app/vendor/proj/include','/app/vendor/geos/include']
         include_dirs.extend(self.strip_includes(self.compiler.compiler))
         include_dirs.extend(self.strip_includes(self.compiler.compiler_so))
         include_dirs.extend(self.strip_includes(self.compiler.compiler_cxx))
