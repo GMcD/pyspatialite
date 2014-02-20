@@ -154,7 +154,7 @@ class OverrideSystemIncludeOrderBuildCommand(build_ext):
         raise HeaderNotFoundException("cannot find %s, bailing out" % header)
 
     def check_lib(self, ext,func, lib, msg, libz):
-        self.compiler.include_dirs.extend('/usr/local/lib', '/app/vendor/proj/lib')
+        self.compiler.include_dirs.extend(['/usr/local/lib', '/app/vendor/proj/lib'])
         if self.compiler.has_function(func,libraries=libz + [lib],library_dirs=self.compiler.library_dirs + ext.library_dirs):
             ext.libraries.append(lib)
             ext.libraries.extend(libz)
