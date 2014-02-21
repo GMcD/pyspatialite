@@ -272,7 +272,9 @@ def get_setup_args():
                     extra_objects = [],
                     define_macros = [
                         ("VERSION",'"%s"' % PYSPATIALITE_VERSION),
-                        ("SQLITE_ENABLE_RTREE", "1"),   # build with fulltext search enabled
+                        ("SQLITE_ENABLE_FTS3", "1"),    # build with fulltext search enabled
+                        ("SQLITE_ENABLE_RTREE", "1"),   # build with RTREE enabled
+                        ("SQLITE_ENABLE_COLUMN_METADATA", "1"), 
                         ("NDEBUG","1"),
                         ("SPL_AMALGAMATION","1"),
                         ('MODULE_NAME', '\\"spatialite.dbapi2\\"') if sys.platform == "win32" else ('MODULE_NAME', '"spatialite.dbapi2"')
